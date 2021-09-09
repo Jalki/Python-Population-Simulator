@@ -7,11 +7,6 @@ from dearpygui.core import *
 set_global_font_scale(1.25)
 #dpg.set_theme("Gold")
 
-#Upon clicking add civilization, this function saves a civilization.
-def save_callback(sender, data, civ =[], time=[], pop_grow=[], pop_death=[], popdensity=[], naturaldis=[], plague=[], max_plague=[], dur_plague=[], ini_pop=[]):
-    print("Save Clicked, civilization made!")
-    input_value_civ = get_value ("Civ Name")
-    civ.append(input_value_civ)
 
 #This function is for generating a chart GUI based on the civilizations given. Each civilization is assigned a random color for its identification and it can not be the same color!
 def generate_chart(sender, data):
@@ -32,19 +27,19 @@ def wipe_callback():
 with dpg.window(label="Civ_Setup", width= 520, height= 720):
     with dpg.tab_bar():
         with dpg.tab(label="Civilization Creation"):
-            dpg.add_input_text(label="Civ Name")
+            dpg.add_input_text(label="Civ_Name")
             dpg.add_separator()
             dpg.add_spacing(count=16)
             dpg.add_input_int(label="Timescale")
             dpg.add_separator()
             dpg.add_spacing(count=16)
-            dpg.add_input_float(label="Population Growthrate")
+            dpg.add_input_float(label="Population_Growthrate")
             dpg.add_separator()
             dpg.add_spacing(count=16)
-            dpg.add_input_float(label="Population Deathrate")
+            dpg.add_input_float(label="Population_Deathrate")
             dpg.add_separator()
             dpg.add_spacing(count=16)
-            dpg.add_input_float(label="Population Area Density")
+            dpg.add_input_float(label="Population_Area_Density")
             dpg.add_separator()
             dpg.add_spacing(count=16)
             dpg.add_slider_float(label="Natural Disaster Chance")
@@ -66,6 +61,21 @@ with dpg.window(label="Civ_Setup", width= 520, height= 720):
             dpg.add_separator()
             dpg.add_spacing(count=16)
             #dpg.add_bool_value(label="Is this population model exponential or logistical?", use_internal_label=True, default_value=False)
+
+            #Upon clicking add civilization, this function saves a civilization.
+            def save_callback(sender, data, civ =[], time=[], pop_grow=[], pop_death=[], pop_density=[], naturaldis=[], plague=[], max_plague=[], dur_plague=[], ini_pop=[]):
+                print("Save Clicked, civilization made!")
+                input_value_civ = get_value ("Civ_Name")
+                civ.append(input_value_civ)
+                input_value_time = get_value ("Timescale")
+                time.append(input_value_time)
+                input_value_popgrow = get_value("Population_Growthrate")
+                pop_grow.append(input_value_popgrow)
+                input_value_popdead = get_value("Population_Deathrate")
+                pop_death.append(input_value_popdead)
+                input_value_density = get_value("Population_Area_Density")
+                pop_density.append(input_value_density)
+
             dpg.add_button(label="Add Civ", callback=save_callback)
             add_same_line()
             dpg.add_button(label="Delete Civ", callback=delete_callback)
@@ -76,6 +86,7 @@ with dpg.window(label="Civ_Setup", width= 520, height= 720):
             dpg.add_separator()
             dpg.add_spacing(count=16)
             dpg.add_text("Nice done!", color = [232, 163, 33])
+
 
             with dpg.table(header_row=False, delay_search=True,
                             borders_innerH=True, borders_outerH=True, borders_innerV=True,
