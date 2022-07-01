@@ -3,7 +3,7 @@
 
 The goal of this python project is to create an application that can help show the dynamics of population growth of a certain population given parameters by the user. With things like population density and disease taken into some account, the base model is a population curve with population growth taken into account vs population death. The basics of the system would then expand to printing graphs to visualized the change in the population dynamics.
 
-![GUI Example]()
+![GUI Example](PythonPopulationSim/Python-Population-Simulator/Images/python_NTr31b8eOV.png)
 
 As of now, the code is officially in 0.3. The Features added so far are just basic user input sliders and storing of data. Heres the next few plans!
 
