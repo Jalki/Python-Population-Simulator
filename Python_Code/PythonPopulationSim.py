@@ -45,13 +45,6 @@ def save_callback(sender, data):
     dpg.get_value("Ini_Pop")]
     print(Civ_Info)
     
-    
-
-    #with dpg.table_row(parent="civ_table"):
-        #for i in range (0, Civ_Count):
-            #dpg.add_text(f"dpg.")
-            #dpg.add_text("{Civ_Info[0]}")
-    
     with dpg.table_row(parent="civ_table"):
         Count = int(list(Civ_Count[N]))
         for i in range(0,Count):
